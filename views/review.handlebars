@@ -1,0 +1,7 @@
+{{#if loggedIn}}
+<form method="POST" action="/jobs/{{job.id}}/reviews">
+    <h2>Add a Review</h2>
+    <textarea placeholder='Enter review here...' name="new-review"></textarea>
+    <button type="submit">Submit</button>
+</form>
+{{/if}}
