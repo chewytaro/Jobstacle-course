@@ -17,6 +17,19 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const usersData = await User.findAll({
+      attributes: {
+        exclude: ['password', 'createdAt', 'updatedAt']
+      }
+    });
+    res.status(200).json(usersData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
