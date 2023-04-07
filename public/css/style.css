@@ -1,24 +1,47 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.btn {
+    text-align: center;
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 1px solid transparent;
+    outline: none;
+    color: #1a1a1a;
+    background-color: #aeaeae;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
+.btn:hover {
+    background-color: #cecece;
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
+.btn.btn-squared {
+    border-radius: 0;
+  }
+  
+  .btn.btn-sm {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.9rem;
+  }
+  
+  .btn.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.8rem 1.4rem;
+  }
+  
+  .btn.btn-block {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  
+  .btn.btn-primary {
+    background-color: #2d3e50;
+    color: #d9e9e8;
+  }
+  
+  .btn.btn-primary:hover {
+    background-color: #57779a;
+  }
