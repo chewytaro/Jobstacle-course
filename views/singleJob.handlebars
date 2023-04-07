@@ -1,0 +1,25 @@
+<div class="text-center">
+    
+    <h1>{{title}}</h1><span>{{salary}}</span>
+    <p>{{description}}</p>
+    <p>{{status}}</p>
+    <p>
+        <button class="btn btn-primary"><a href="/reviews">Leave a Review</a></button>
+    </p>
+
+    <h2>Reviews</h2>
+    {{#if reviews.length}}
+    <ul>
+        {{#each reviews as |review|}}
+        <li>
+            <p>{{review.content}}</p>
+            <p>{{format_date date_created}}</p>
+            <p>By: {{job.user.name}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No reviews yet.</p>
+    {{/if}}
+
+</div>
