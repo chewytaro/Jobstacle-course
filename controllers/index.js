@@ -11,4 +11,8 @@ const jobRoutes = require('./api/jobRoutes');
 router.use('/users', userRoutes);
 router.use('/jobs', jobRoutes);
 
+// Welcome route
+const welcomeRoutes = require('./welcome');
+router.use('/welcome', welcomeRoutes);
+
 module.exports = router;
