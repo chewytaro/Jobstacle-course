@@ -1,11 +1,24 @@
 const router = require('express').Router();
-const { Job } = require('../../models');
+const { Job, Tag, User, JobTag } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Get all jobs
 router.get('/', async (req, res) => {
   try {
-    const jobsData = await Job.findAll();
+    const jobsData = await Job.findAll({
+      include :[
+      {
+        model: Tag,
+        attributes: ['name'],
+        through: JobTag,
+        as: 'tags'
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      }
+    ]
+  });
     res.status(200).json(jobsData);
   } catch (err) {
     res.status(500).json(err);
@@ -15,7 +28,20 @@ router.get('/', async (req, res) => {
 // Get a job by id
 router.get('/:id', async (req, res) => {
   try {
-    const jobData = await Job.findByPk(req.params.id);
+    const jobData = await Job.findByPk(req.params.id,{
+      include :[
+      {
+        model: Tag,
+        attributes: ['name'],
+        through: JobTag,
+        as: 'tags'
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      }
+    ]
+  });
     
     if (!jobData) {
       res.status(404).json({ message: 'No job found with this id' });
