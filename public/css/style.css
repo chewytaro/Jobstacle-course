@@ -45,3 +45,7 @@
   .btn.btn-primary:hover {
     background-color: #57779a;
   }
+  
+  .card{
+    border-radius: 0.5rem;
+  }
