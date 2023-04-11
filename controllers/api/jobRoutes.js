@@ -19,7 +19,12 @@ router.get('/', async (req, res) => {
       }
     ]
   });
-    res.status(200).json(jobsData);
+  const jobs = jobsData.map((job)=> job.get({ plain: true}));
+  res.render('alljobs', {
+    jobs,
+    logged_in: req.session.logged_in
+  });
+    // res.status(200).json(jobsData);
   } catch (err) {
     res.status(500).json(err);
   }
