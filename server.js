@@ -18,7 +18,6 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
-
 // Set up middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -38,7 +37,7 @@ app.use(
 );
 
 // Set up routes
-app.use('/', routes);
+app.use(routes);
 
 // Start the server
 (async () => {
