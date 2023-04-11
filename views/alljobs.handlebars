@@ -8,6 +8,11 @@
     {{#each jobs as |job|}}
     <div class="row mb-2">
       <div class="col-md-8">
+        <h4><a href="/job/{{job.id}}">{{job.title}}</a></h4>
+        <p>{{job.description}}</p>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
         <div class="card bg-primary mb-3">
           <div class="card-header bg-success text-white">{{job.title}}</div>
           <div class="card-body bg-">
