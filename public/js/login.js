@@ -7,7 +7,8 @@ const loginFormHandler = async (event) => {
 
   if (username && password) {
     // Send a POST request to the API endpoint
-    const response = await fetch('/users/login', {
+    // Send a POST request to the login endpoint
+      const response = await fetch('/users/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -16,8 +17,15 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/welcome');
+      const data = await response.json();
+      if (data.authenticated) {
+        // If the user is authenticated, redirect to the welcome page
+        document.location.replace('/welcome');
+      } else {
+        alert('Incorrect username or password');
+      }
     } else {
-      alert(response.statusText);
+      alert('Failed to log in');
     }
   }
 };
@@ -25,23 +33,24 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
+  const username = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && password) {
-    const response = await fetch('/api/users', {
+  if (username && password) {
+    const response = await fetch('/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/welcome');
     } else {
       alert(response.statusText);
     }
   }
 };
+
 
 document
   .querySelector('.login-form')

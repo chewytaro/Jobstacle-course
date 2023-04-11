@@ -13,4 +13,8 @@ const tagRoutes = require('./api/tagRoutes');
 router.use('/users', userRoutes);
 router.use('/jobs', jobRoutes);
 router.use('/tags', tagRoutes);
+
+const welcomeRoutes = require('./welcome');
+router.use('/welcome', welcomeRoutes);
+
 module.exports = router;
