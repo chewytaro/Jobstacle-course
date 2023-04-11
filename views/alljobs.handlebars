@@ -1,37 +1,29 @@
 <!-- alljobs.handlebars -->
 <!-- alljobs.handlebars -->
-{{#each jobs}}
-  <div class="card bg-primary mb-3">
-    <div class="card-header bg-success text-white">{{title}}</div>
-    <div class="card-body bg-">
-      <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
-      <p class="card-text">{{description}}</p>
-      <div>
-        {{#each tags}}
-          <span class="badge bg-secondary">{{name}}</span>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-{{/each}}
-
-
-   {{#if jobs.length}}
+{{#if jobs.length}}
   <div class="col-md-6 jobs-list">
     <h3>Current Applications:</h3>
 
     {{#each jobs as |job|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/job/{{job.id}}">{{job.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
+        <div class="card bg-primary mb-3">
+          <div class="card-header bg-success text-white">{{job.title}}</div>
+          <div class="card-body bg-">
+            <h6 class="card-subtitle mb-2 text-muted">{{job.user.username}}</h6>
+            <p class="card-text">{{job.description}}</p>
+            <div>
+              {{#each job.tags}}
+                <span class="badge bg-secondary">{{name}}</span>
+              {{/each}}
+            </div>
+            <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
+          </div>
+        </div>
       </div>
     </div>
     {{/each}}
   </div>
-  {{/if}}
-</div>
+{{/if}}
 
 <script src="./js/myApplications.js"></script>
