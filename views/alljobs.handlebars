@@ -27,13 +27,13 @@
 
 
    {{#if jobs.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 jobs-list">
     <h3>Current Applications:</h3>
 
     {{#each jobs as |job|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/jobs/{{job.id}}">{{job.name}}</a></h4>
+        <h4><a href="/job/{{job.id}}">{{job.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
