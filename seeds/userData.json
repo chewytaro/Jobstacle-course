@@ -1,18 +1,22 @@
 [
-    {
-      "username": "johndoe",
-      "email": "johndoe@example.com",
+  {
+    "username": "johnsmith",
       "password": "password123"
     },
     {
       "username": "janedoe",
-      "email": "janedoe@example.com",
-      "password": "password456"
+      "password": "mypassword"
     },
     {
-      "username": "bobsmith",
-      "email": "bobsmith@example.com",
-      "password": "password789"
+
+      "username": "bobross",
+      "password": "happytrees"
+
+    },
+    {
+
+      "username": "sarahlee",
+      "password": "pastrychef"
     }
   ]
   
