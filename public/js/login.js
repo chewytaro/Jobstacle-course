@@ -6,8 +6,9 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
 
   if (username && password) {
+    // Send a POST request to the API endpoint
     // Send a POST request to the login endpoint
-    const response = await fetch('/users/login', {
+      const response = await fetch('/users/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -15,7 +16,14 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
+      document.location.replace('/welcome');
+      const data = await response.json();
+      if (data.authenticated) {
+        // If the user is authenticated, redirect to the welcome page
+        document.location.replace('/welcome');
+      } else {
+        alert('Incorrect username or password');
+      }
     } else {
       alert('Failed to log in');
     }
