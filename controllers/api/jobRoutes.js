@@ -3,7 +3,7 @@ const { Job, Tag, User, JobTag } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Get all jobs
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const jobsData = await Job.findAll({
       include :[
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get a job by id
-router.get('/:id', async (req, res) => {
+router.get('/:id',  withAuth, async (req, res) => {
   try {
     const jobData = await Job.findByPk(req.params.id,{
       include :[
@@ -52,8 +52,12 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'No job found with this id' });
       return;
     }
-
-    res.status(200).json(jobData);
+    const job = jobData.get({ plain: true });
+console.log(job);
+    res.render('singleJob', {
+      ...job,
+      logged_in: req.session.logged_in
+    })
   } catch (err) {
     res.status(500).json(err);
   }
