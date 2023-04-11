@@ -36,8 +36,29 @@
 
         </footer>
     </div>
+
+    <!-- Add the logout script inline -->
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+    <script>
+      const logoutButton = document.querySelector('#logout');
+
+      if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+          const response = await fetch('/api/users/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          });
+
+          if (response.ok) {
+            setTimeout(() => {
+              document.location.replace('/login');
+            }, 500);
+          } else {
+            alert(response.statusText);
+          }
+        });
+      }
+    </script>
     {{/if}}
 </body>
 
