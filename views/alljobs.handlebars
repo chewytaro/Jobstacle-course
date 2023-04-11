@@ -1,9 +1,10 @@
-<!-- alljobs.handlebars -->
-<!-- alljobs.handlebars -->
-{{#if jobs.length}}
+
+<div class="row mt-4">
+  {{#if jobs.length}}
+
   <div class="col-md-6 jobs-list">
     <h3>Current Applications:</h3>
-
+    
     {{#each jobs as |job|}}
     <div class="row mb-2">
       <div class="col-md-8">
@@ -24,6 +25,7 @@
     </div>
     {{/each}}
   </div>
-{{/if}}
 
 <script src="./js/myApplications.js"></script>
+</div>
+

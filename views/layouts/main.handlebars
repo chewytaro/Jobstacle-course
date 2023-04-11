@@ -17,13 +17,20 @@
             <h1 class="title">
                 <a href="/">Welcome to Jobstacle Course</a>
             </h1>
+
+            {{#if logged_in}}
+            <p>An application to track the jobs you want to apply to, have applied to, have interviewed for, been
+                offered, and denied!</p>
+            {{else}}
+            An application to track the jobs you want to apply to, have applied to, have interviewed for, been offered,
+            and denied! Login to view your profile and jobs or sign up to create an account.</p>
+            {{/if}}
+
             <nav>
                 {{#if logged_in}}
-                <button id="profile"><a href="/profile">My Profile</a></button>
-                <a href="/jobs">My Jobs</a>
-                <a href="/hiring">Looking to Hire?</a>
-                <button class="no-button" id="logout">logout</button>
+                <button class="no-button" id="logout">Logout</button>
                 {{else}}
+
                 {{/if}}
             </nav>
         </header>
@@ -46,8 +53,31 @@
         </footer>
     </div>
 
+
+
+    <!-- Add the logout script inline -->
+
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+    <script>
+      const logoutButton = document.querySelector('#logout');
+
+      if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+          const response = await fetch('/api/users/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          });
+
+          if (response.ok) {
+            setTimeout(() => {
+              document.location.replace('/login');
+            }, 500);
+          } else {
+            alert(response.statusText);
+          }
+        });
+      }
+    </script>
     {{/if}}
 </body>
 

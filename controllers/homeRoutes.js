@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
         const jobs = jobData.map((job) => job.get({ plain: true }));
 
-        res.render('welcome', {
+        res.render('login', {
             jobs,
             logged_in: req.session.logged_in
         });
@@ -35,6 +35,16 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
     res.render('signup');
+});
+
+router.get('/newjob', withAuth, (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect('/login');
+        return;
+    }
+    res.render('newjob', {
+        logged_in: req.session.logged_in
+    });
 });
 
 module.exports = router;
