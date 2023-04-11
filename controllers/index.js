@@ -8,7 +8,9 @@ router.get('/', (req, res) => {
 // User and job routes
 const userRoutes = require('./api/userRoutes');
 const jobRoutes = require('./api/jobRoutes');
+const tagRoutes = require('./api/tagRoutes');
+
 router.use('/users', userRoutes);
 router.use('/jobs', jobRoutes);
-
+router.use('/tags', tagRoutes);
 module.exports = router;
