@@ -16,19 +16,18 @@
                 <a href="/">Welcome to Jobstacle Course</a>
             </h1>
             {{#if logged_in}}
-            <p>An application to track the jobs you want to apply to, have applied to, have interviewed for, been offered, and denied! </p>
+            <p>An application to track the jobs you want to apply to, have applied to, have interviewed for, been
+                offered, and denied!</p>
             {{else}}
-            An application to track the jobs you want to apply to, have applied to, have interviewed for, been offered, and denied! Login to view your profile and jobs or sign up to create an account.</p>
+            An application to track the jobs you want to apply to, have applied to, have interviewed for, been offered,
+            and denied! Login to view your profile and jobs or sign up to create an account.</p>
             {{/if}}
             <nav>
                 <!-- Conditionally render login or logout links -->
                 {{#if logged_in}}
-                <button id="profile"><a href="/profile">My Profile</a></button>
-                <a href="/jobs">My Jobs</a>
-                <a href="/hiring">Looking to Hire?</a>
-                <button class="no-button" id="logout">logout</button>
+                <button class="no-button" id="logout">Logout</button>
                 {{else}}
-                <a href="../login.handlebars">Login or Sign Up</a>
+                <a href="/login">Login or Sign Up</a>
                 {{/if}}
             </nav>
         </header>
@@ -40,8 +39,6 @@
 
         </footer>
     </div>
-
-    <!-- Render script for logged in users only -->
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}

@@ -6,7 +6,6 @@ const sequelize = require('./config/connection');
 const path = require('path');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const helpers = require('./utils/helpers');
 
 // Initialize the app
 const app = express();
@@ -18,7 +17,6 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-
 
 // Set up middleware
 app.use(express.json());
@@ -39,7 +37,7 @@ app.use(
 );
 
 // Set up routes
-app.use('/', routes);
+app.use(routes);
 
 // Start the server
 (async () => {
