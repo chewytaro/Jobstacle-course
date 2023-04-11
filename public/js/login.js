@@ -6,8 +6,9 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
 
   if (username && password) {
+    // Send a POST request to the API endpoint
     // Send a POST request to the login endpoint
-    const response = await fetch('/users/login', {
+      const response = await fetch('api/users/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
