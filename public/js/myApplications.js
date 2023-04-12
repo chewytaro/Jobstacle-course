@@ -22,6 +22,30 @@ const newFormHandler = async (event) => {
       }
     }
   };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete-job');
+  
+    deleteButtons.forEach((button) => {
+      button.addEventListener('click', async (event) => {
+        const jobId = event.target.getAttribute('data-id');
+        const response = await fetch(`/api/jobs/${jobId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });        
+  
+        if (response.ok) {
+          const deletedJob = document.getElementById(`delete-job-${jobId}`);
+          deletedJob.closest('.row.mb-10').remove();
+        } else {
+          alert('Failed to delete job');
+        }
+      });
+    });
+  });
+  
   
   document
     .querySelector('.new-project-form')

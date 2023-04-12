@@ -6,24 +6,24 @@ const withAuth = require('../../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const jobsData = await Job.findAll({
-      include: [
-        {
-          model: Tag,
-          attributes: ['name'],
-          through: JobTag,
-          as: 'tags'
-        },
-        {
-          model: User,
-          attributes: ['username'],
-        }
-      ]
-    });
-    const jobs = jobsData.map((job) => job.get({ plain: true }));
-    res.render('alljobs', {
-      jobs,
-      logged_in: req.session.logged_in
-    });
+      include :[
+      {
+        model: Tag,
+        attributes: ['name'],
+        through: JobTag,
+        as: 'tags'
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      }
+    ]
+  });
+  const jobs = jobsData.map((job)=> job.get({ plain: true}));
+  res.render('alljobs', {
+    jobs,
+    logged_in: req.session.logged_in
+  });
     // res.status(200).json(jobsData);
   } catch (err) {
     res.status(500).json(err);
@@ -31,29 +31,29 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // Get a job by id
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id',  withAuth, async (req, res) => {
   try {
-    const jobData = await Job.findByPk(req.params.id, {
-      include: [
-        {
-          model: Tag,
-          attributes: ['name'],
-          through: JobTag,
-          as: 'tags'
-        },
-        {
-          model: User,
-          attributes: ['username'],
-        }
-      ]
-    });
-
+    const jobData = await Job.findByPk(req.params.id,{
+      include :[
+      {
+        model: Tag,
+        attributes: ['name'],
+        through: JobTag,
+        as: 'tags'
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      }
+    ]
+  });
+    
     if (!jobData) {
       res.status(404).json({ message: 'No job found with this id' });
       return;
     }
     const job = jobData.get({ plain: true });
-    console.log(job);
+console.log(job);
     res.render('singleJob', {
       ...job,
       logged_in: req.session.logged_in
