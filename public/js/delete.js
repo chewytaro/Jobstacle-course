@@ -4,6 +4,9 @@ const delButtonHandler = async (event) => {
 
         const response = await fetch(`/api/jobs/${id}`, {
             method: 'DELETE',
+            body: JSON.stringify({
+                job_id: id
+            })
         });
 
         if (response.ok) {
@@ -15,5 +18,5 @@ const delButtonHandler = async (event) => {
 };
 
 document
-    .querySelector('.project-list')
+    .querySelector('.job-list')
     .addEventListener('click', delButtonHandler);
