@@ -16,7 +16,7 @@
     <div class="flex-column justify-space-around">
       <header class="display-flex justify-space-between align-center p-2">
         <h1 class="title">
-          <a href="/">Welcome to Jobstacle Course</a>
+          <a href="/welcome">Welcome to Jobstacle Course</a>
         </h1>
 
         {{#if logged_in}}
@@ -53,13 +53,13 @@
 
     {{#if logged_in}}
       <script>
-        const logoutButton = document.querySelector('#logout'); if
-        (logoutButton) { logoutButton.addEventListener('click', async () => {
-        const response = await fetch('/api/users/logout', { method: 'POST',
-        headers: { 'Content-Type': 'application/json' }, }); if (response.ok) {
+        document.addEventListener('DOMContentLoaded', () => { const logoutButton
+        = document.querySelector('#logout'); if (logoutButton) {
+        logoutButton.addEventListener('click', async () => { const response =
+        await fetch('/api/users/logout', { method: 'POST', headers: {
+        'Content-Type': 'application/json' }, }); if (response.ok) {
         setTimeout(() => { document.location.replace('/login'); }, 500); } else
-        { alert(response.statusText); } }); }
-
+        { alert(response.statusText); } }); } });
       </script>
     {{/if}}
   </body>
