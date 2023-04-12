@@ -70,6 +70,15 @@ router.post('/', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
+
+    if (req.body.tag) {
+      const tag = await Tag.findOrCreate({
+        where: { name: req.body.tag },
+      });
+
+      await newJob.addTag(tag[0]);
+    }
+
     res.status(200).json(newJob);
   } catch (err) {
     res.status(400).json(err);
