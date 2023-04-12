@@ -1,15 +1,16 @@
-<div class="intro">
-    <h1>Welcome, {{name}}! What would you like to do today?</h1>
+<div class="d-flex justify-content-center">
+  <div class="col-md-5">
+    <h1>Welcome, {{user.username}}! What would you like to do today?</h1>
+  </div>
+  <div class="col-md-5 my-5">
+    <a href="/api/jobs" class="btn btn-primary btn-lg my-5">My Jobs</a>
+  </div>
+  <div class="col-md-5 my-3">
+      <a href="/newjob" class="btn btn-primary btn-lg my-5">Create a New Job</a>
+  </div>
+  <div class="col-md-5 my-3">
+    <button id="logout" class="btn btn-primary btn-lg my-5">Logout</button>
+  </div>
 </div>
-    
-    <div class="introbutton" >
-        <button type="submit" class=".btn.btn-primary">My Profile</button>
-    </div>
 
-    <div class="introbutton">
-        <button type="submit" class=".btn.btn-primary">My Applications</button>
-    </div>
-
-    <div class="introbutton">
-        <button type="submit" class=".btn.btn-primary">Looking to hire?</button>
-    </div>
+<script src="./js/logout.js"></script>
