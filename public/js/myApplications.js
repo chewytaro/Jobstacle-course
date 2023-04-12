@@ -1,45 +1,30 @@
 const newFormHandler = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#job-name').value.trim();
-  const salary = document.querySelector('#salary').value.trim();
-  const description = document.querySelector('#job-desc').value.trim();
-  const status = document.querySelector('#status').value.trim();
-
-  if (name && salary && description && status) {
-    const response = await fetch(`/api/jobs`, {
-      method: 'POST',
-      body: JSON.stringify({ name, salary, description, status }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      document.location.replace('/myApplications');
-    } else {
-      alert('Failed to create project');
+    event.preventDefault();
+  
+    const title = document.querySelector('#job-name').value.trim();
+    const salary = document.querySelector('#salary').value.trim();
+    const description = document.querySelector('#job-desc').value.trim();
+    const status = document.querySelector('#status').value.trim();
+  
+    if (title && salary && description && status) {
+      const response = await fetch(`/api/jobs`, {
+        method: 'POST',
+        body: JSON.stringify({ title, salary, description, status }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/api/jobs');
+      } else {
+        alert('Failed to create job');
+      }
     }
-  }
-};
-
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/jobs/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) { 
-      document.location.replace('/myApplications');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  const createJobForm = document.getElementById('create-job-form');
-  createJobForm.addEventListener('submit', newFormHandler);
-});
+  };
+  
+  document
+    .querySelector('.new-project-form')
+    .addEventListener('submit', newFormHandler);
+  
+  
