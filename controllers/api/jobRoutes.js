@@ -97,11 +97,12 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Delete a job by id (with authentication)
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletedJob = await Job.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
 
