@@ -7,7 +7,7 @@ const newFormHandler = async (event) => {
     const status = document.querySelector('#status').value.trim();
   
     if (name && salary && description && status) {
-      const response = await fetch(`/api/jobRoutes`, {
+      const response = await fetch(`/api/jobs`, {
         method: 'POST',
         body: JSON.stringify({ name, salary, description, status }),
         headers: {
