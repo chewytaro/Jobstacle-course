@@ -5,7 +5,7 @@
   </main>
   {{#if jobs.length}}
     <div class="row">
-    <div class="col-md-10 mx-auto">
+    <div class="col-md-10 mx-auto project-list">
       <h3>Current Applications:</h3>
 
       {{#each jobs as |job|}}
@@ -18,10 +18,10 @@
                 <p class="card-text">{{job.description}}</p>
                 <div class="mb-10">
                   {{#each job.tags}}
-                    <span class="badge bg-warning">{{name}}</span>
+                    <span class="badge bg-warning">{{job.tag}}</span>
                   {{/each}}
                 </div>
-                <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
+                <button class="btn btn-sm btn-danger" data-id="{{job.title}}">DELETE</button>
               </div>
             </div>
           </div>
