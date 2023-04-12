@@ -1,5 +1,4 @@
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,31 +12,40 @@
   </head>
 
   <body>
-    <div class="flex-column justify-space-around">
-      <header class="display-flex justify-space-between align-center p-2">
-        <h1 class="title">
-          <a href="/welcome">Welcome to Jobstacle Course</a>
-        </h1>
-
-        {{#if logged_in}}
-          <p>An application to track the jobs you want to apply to, have applied
-            to, have interviewed for, been offered, and denied!</p>
-        {{else}}
-          <p>An application to track the jobs you want to apply to, have applied
-            to, have interviewed for, been offered, and denied! Login to view
-            your profile and jobs or sign up to create an account.</p>
-        {{/if}}
-
-        <nav>
+    <div class="container-fluid">
+      <header class="row">
+        <div class="col-12 bg-primary text-white py-3">
+          <h1 class="text-center mb-3">
+            <a href="/welcome" class="text-white text-decoration-none">
+              Welcome to Jobstacle Course
+            </a>
+          </h1>
           {{#if logged_in}}
-            <button class='btn btn-primary'  id="logout">Logout</button>
+            <p class="text-center mb-0">
+              An application to track the jobs you want to apply to, have
+              applied to, have interviewed for, been offered, and denied!
+            </p>
+          {{else}}
+            <p class="text-center mb-0">
+              An application to track the jobs you want to apply to, have
+              applied to, have interviewed for, been offered, and denied! Login
+              to view your profile and jobs or sign up to create an account.
+            </p>
+          {{/if}}
+        </div>
+      </header>
+      <div class="row">
+        <div class="col-12 text-end">
+          {{#if logged_in}}
+            <nav>
+              <button class="btn btn-primary mt-2" id="logout">Logout</button>
+            </nav>
           {{else}}
           {{/if}}
-        </nav>
-      </header>
+        </div>
+      </div>
       <main class="container container-fluid mt-5">
         {{#if logged_in}}
-          
           
           {{!-- {{else}}
             <a class="login-btn" href="/login">Login or Sign Up</a> --}}
