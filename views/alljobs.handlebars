@@ -1,24 +1,24 @@
-<div class="row mt-4">
+<div class="row mt-4 mx-auto">
+  <main class="mx-auto container container-fluid mt-5">
+  <a href="/api/jobs" class="btn btn-primary">My Jobs</a>
+  <a href="/" class="btn btn-primary">Dashboard</a>
+  </main>
   {{#if jobs.length}}
-    <div class="col-md-6 jobs-list">
+    <div class="row">
+    <div class="col-md-10 mx-auto">
       <h3>Current Applications:</h3>
 
       {{#each jobs as |job|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a href="/job/{{job.id}}">{{job.title}}</a></h4>
-            <p>{{job.description}}</p>
-          </div>
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
-            <div class="card bg-primary mb-3">
+        <div class="row mb-10">
+          <div class="col-md-10">
+            <div class="card bg-primary rounded mb-3">
               <div class="card-header bg-success text-white">{{job.title}}</div>
               <div class="card-body bg-light">
-                <h6 class="card-subtitle mb-2 text-muted">{{job.user.username}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{job.status}}</h6>
                 <p class="card-text">{{job.description}}</p>
-                <div>
+                <div class="mb-10">
                   {{#each job.tags}}
-                    <span class="badge bg-secondary">{{name}}</span>
+                    <span class="badge bg-warning">{{name}}</span>
                   {{/each}}
                 </div>
                 <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
@@ -27,6 +27,7 @@
           </div>
         </div>
       {{/each}}
+    </div>
     </div>
   {{else}}
     <div class="col-md-12">
