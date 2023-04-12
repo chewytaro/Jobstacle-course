@@ -7,7 +7,7 @@ const newFormHandler = async (event) => {
     const status = document.querySelector('#status').value.trim();
   
     if (name && salary && description && status) {
-      const response = await fetch(`/api/jobRoutes`, {
+      const response = await fetch(`/jobs`, {
         method: 'POST',
         body: JSON.stringify({ name, salary, description, status }),
         headers: {
@@ -16,7 +16,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/myApplications');
+        document.location.replace('/alljobs');
       } else {
         alert('Failed to create project');
       }
@@ -27,12 +27,12 @@ const newFormHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/jobRoutes/${id}`, {
+      const response = await fetch(`/jobs${id}`, {
         method: 'DELETE',
       });
   
       if (response.ok) {
-        document.location.replace('/myApplications');
+        document.location.replace('/alljobs');
       } else {
         alert('Failed to delete project');
       }
@@ -45,5 +45,5 @@ const newFormHandler = async (event) => {
   
   document
     .querySelector('.project-list')
-    .addEventListener('click', delButtonHandler);
+  //  .addEventListener('click', delButtonHandler);
   
