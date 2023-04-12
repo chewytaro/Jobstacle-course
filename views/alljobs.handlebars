@@ -13,8 +13,10 @@
         <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
       </div>
     </div>
-    {{/each}}
-  </div>
+  {{else}}
+    <div class="col-md-12">
+      <h3>No current applications.</h3>
+    </div>
   {{/if}}
 </div>
 

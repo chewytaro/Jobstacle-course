@@ -45,3 +45,20 @@
   .btn.btn-primary:hover {
     background-color: #57779a;
   }
+  
+  .title {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    margin: 0;
+    text-align: center;
+}
+.login-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
