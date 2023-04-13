@@ -38,6 +38,7 @@
         <div class="col-12 text-end">
           {{#if logged_in}}
             <nav>
+              <button class="btn btn-primary mt-2" id="back">Back</button>
               <button class="btn btn-primary mt-2" id="logout">Logout</button>
             </nav>
           {{else}}
@@ -60,15 +61,7 @@
     <!-- Add the logout script inline -->
 
     {{#if logged_in}}
-      <script>
-        document.addEventListener('DOMContentLoaded', () => { const logoutButton
-        = document.querySelector('#logout'); if (logoutButton) {
-        logoutButton.addEventListener('click', async () => { const response =
-        await fetch('/api/users/logout', { method: 'POST', headers: {
-        'Content-Type': 'application/json' }, }); if (response.ok) {
-        setTimeout(() => { document.location.replace('/login'); }, 500); } else
-        { alert(response.statusText); } }); } });
-      </script>
+      <script src="/js/logout.js"></script>
     {{/if}}
   </body>
 
