@@ -4,11 +4,11 @@ const newFormHandler = async (event) => {
   const salary = document.querySelector('#salary').value.trim();
   const description = document.querySelector('#job-desc').value.trim();
   const status = document.querySelector('#status').value.trim();
-  const tag = document.querySelector('#job-tag').value.trim();
-  if (title && salary && description && status && tag ) {
+
+  if (title && salary && description && status) {
     const response = await fetch(`/api/jobs`, {
       method: 'POST',
-      body: JSON.stringify({ title, salary, description, status, tag }),
+      body: JSON.stringify({ title, salary, description, status }),
       headers: {
         'Content-Type': 'application/json',
       },
