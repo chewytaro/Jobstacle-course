@@ -71,6 +71,22 @@ main {
   margin-left: 100;
 }
 
+.welcome-container {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-left {
+  margin-left:8.1rem;
+}
+
+.buttons {
+  margin-left: 7.3rem;
+}
+
 /* #logout {
   margin-left: 150;
 } */
