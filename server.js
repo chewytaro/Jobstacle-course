@@ -29,10 +29,6 @@ app.get('/node_modules/all-animation/dist/all-animation.css', function(req, res)
   res.sendFile(path.join(__dirname, '/node_modules/all-animation/dist/all-animation.css'));
 });
 
-app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', function(req, res) {
-  res.setHeader('Content-Type', 'text/css');
-  res.sendFile(path.join(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.min.css'));
-});
 // Set up session middleware
 
 app.use(
