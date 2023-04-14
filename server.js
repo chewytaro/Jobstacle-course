@@ -6,8 +6,10 @@ const sequelize = require('./config/connection');
 const path = require('path');
 const myHelpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helpers = require('./utils/helpers');
 
 // Initialize the app
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,11 +19,13 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Set up middleware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up session middleware
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -38,6 +42,7 @@ app.use(
 app.use(routes);
 
 // Start the server
+
 (async () => {
   try {
     await sequelize.sync({ force: false });
