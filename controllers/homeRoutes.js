@@ -28,7 +28,7 @@ router.get('/newjob', withAuth, (req, res) => {
     });
 });
 
-router.get('/editJob/:id', withAuth, async(req, res) => {
+router.get('/editJob/:id', withAuth, async (req, res) => {
     try {
         const jobData = await Job.findOne({
             where: {
@@ -37,10 +37,10 @@ router.get('/editJob/:id', withAuth, async(req, res) => {
             attributes: ['title', 'description', 'salary', 'status'],
             include: [
                 {
-                  model: Tag,
-                  attributes: ['name'],
-                  through: JobTag,
-                  as: 'tags'
+                    model: Tag,
+                    attributes: ['name'],
+                    through: JobTag,
+                    as: 'tags'
                 },
             ],
         });
@@ -60,6 +60,6 @@ router.get('/editJob/:id', withAuth, async(req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-});  
+});
 
 module.exports = router;
