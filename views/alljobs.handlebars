@@ -11,12 +11,14 @@
       {{#each jobs as |job|}}
         <div class="row mb-10">
           <div class="col-md-10">
+
             <div class="card bg-primary rounded mb-3 a-dance">
               <div class="card-header bg-success text-white">{{job.title}}</div>
+
               <div class="card-body bg-light">
-                <h6 class="card-subtitle mb-2 text-muted">{{job.status}}</h6>
-                <p class="card-text">{{job.description}}</p>
-                <p class="card-text">{{job.salary}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Status: {{job.status}}</h6>
+                <p class="card-text">Description: {{job.description}}</p>
+                <p class="card-text">Salary: {{job.salary}}</p>
                 <div class="mb-10">
                   {{#each job.tags}}
                     <span class="badge bg-warning">{{name}}</span>
