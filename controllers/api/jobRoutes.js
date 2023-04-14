@@ -99,6 +99,30 @@ router.put('/:id', withAuth, async (req, res) => {
       return;
     }
 
+    // Fetch the existing job to update the tags
+    const job = await Job.findByPk(req.params.id, {
+      include: [
+        {
+          model: Tag,
+          attributes: ['name'],
+          through: JobTag,
+          as: 'tags'
+        }
+      ]
+    });
+
+    // Remove all associated tags from the job
+    await job.setTags([]);
+
+    // If a new tag is provided in the request, add it to the job
+    if (req.body.tag) {
+      const tag = await Tag.findOrCreate({
+        where: { name: req.body.tag },
+      });
+
+      await job.addTag(tag[0]);
+    }
+
     res.status(200).json(updatedJob);
   } catch (err) {
     res.status(500).json(err);
