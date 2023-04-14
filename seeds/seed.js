@@ -2,6 +2,7 @@ const seedJobs = require('./jobSeeds');
 const seedUsers = require('./userSeeds');
 const seedTags = require('./tagSeeds');
 const seedJobTags = require('./jobtagSeeds');
+const seedReviews = require('./reviewSeeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
@@ -20,6 +21,9 @@ const seedAll = async () => {
   await seedJobTags();
   console.log('\n----- JOBTAGS SEEDED -----\n');
   
+  await seedReviews();
+  console.log('\n----- REVIEWS SEEDED -----\n');
+
   process.exit(0);
 };
 

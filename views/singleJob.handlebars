@@ -1,25 +1,41 @@
-<div class="text-center">
-
-  <h1>{{title}}</h1><span>{{salary}}</span>
+<div class="card text-center">
+  <div class="card-header">
+    Status: {{status}}
+  </div>
+  <div class="card-body">
+  <h1 class="card-title mt-2">{{title}}</h1>
+  <p class="card-text">Salary: ${{salary}}</p>
   <p>{{description}}</p>
-  <p>{{status}}</p>
-  <p>
-    <a href="/reviews" class="btn btn-primary">Leave a Review</a>
-  </p>
-
-  <h2>Reviews</h2>
-  {{#if reviews.length}}
-    <ul>
-      {{#each reviews as |review|}}
-        <li>
-          <p>{{review.content}}</p>
-          <p>{{format_date date_created}}</p>
-          <p>By: {{job.user.username}}</p>
-        </li>
-      {{/each}}
-    </ul>
-  {{else}}
-    <p>No reviews yet.</p>
+</div>
+  {{#if logged_in}}
+  <div class="mt-3">
+    <form id="review-form" data-id="{{id}}">
+      <div class="input-group">
+        <span class="input-group-text">Add a Review</span>
+        <textarea class="form-control" style="height: 5rem; width: 30rem;" aria-label="With textarea" name="new-review"
+          id="new-review"></textarea>
+      </div>
+      <button id="submit-button" class="btn bg-primary text-white my-3" type="submit">Submit</button>
+    </form>
+  </div>
   {{/if}}
 
+
+  <h2>Reviews</h2>
+  <ul>
+    {{#if reviews.length}}
+    {{#each reviews as |review|}}
+    <li>
+      <p>{{review.content}}</p>
+      <p>By {{job.user.username}}</p>
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p>No reviews yet.</p>
+  {{/if}}
+
+<script src="/js/addReview.js"></script>
+
 </div>
+<script src="/js/addReview.js"></script>

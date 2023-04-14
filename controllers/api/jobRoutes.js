@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Job, Tag, User, JobTag } = require('../../models');
+const { Job, Tag, User, JobTag, Review } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Get all jobs
@@ -129,6 +129,20 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// Review a job
+router.post('/:id', async (req, res) => {
+  try {
+      const newReview = await Review.create({
+          content: req.body.content,
+          job_id: req.params.id,
+      });
+  
+      res.status(200).render(newReview);
+  } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
+  }
+});
 
 // Delete a job by id (with authentication)
 router.delete('/:id', withAuth, async (req, res) => {
