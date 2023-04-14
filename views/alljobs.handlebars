@@ -16,12 +16,14 @@
               <div class="card-body bg-light">
                 <h6 class="card-subtitle mb-2 text-muted">{{job.status}}</h6>
                 <p class="card-text">{{job.description}}</p>
+                <p class="card-text">{{job.salary}}</p>
                 <div class="mb-10">
                   {{#each job.tags}}
                     <span class="badge bg-warning">{{name}}</span>
                   {{/each}}
                 </div>
                 <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
+                <a href="/editJob/{{job.id}}" class="btn btn-sm btn-info">EDIT</a>
               </div>
             </div>
           </div>
@@ -36,4 +38,5 @@
   {{/if}}
 </div>
 
-<script src="/js/delete.js"></script>
+<script src="/js/edit.js"></script>
+{{!-- <script src="/js/delete.js"></script> --}}
