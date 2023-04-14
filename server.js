@@ -6,7 +6,7 @@ const sequelize = require('./config/connection');
 const path = require('path');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const serveStatic = require('serve-static');
 // Initialize the app
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +21,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// sets CSS type
+app.get('/node_modules/all-animation/dist/all-animation.css', function(req, res) {
+  res.setHeader('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, '/node_modules/all-animation/dist/all-animation.css'));
+});
+
+app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', function(req, res) {
+  res.setHeader('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, 'node_modules/bootstrap/dist/css/bootstrap.min.css'));
+});
 // Set up session middleware
 app.use(
   session({

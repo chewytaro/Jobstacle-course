@@ -1,7 +1,7 @@
 <div class="row mt-4 mx-auto">
   <main class="mx-auto container container-fluid mt-5">
-    <a href="/api/jobs" class="btn btn-primary">My Jobs</a>
-    <a href="/" class="btn btn-primary">Dashboard</a>
+    <a href="/api/jobs" class="btn btn-primary a-jello-vertical">My Jobs</a>
+    <a href="/" class="btn btn-primary a-jello-vertical">Dashboard</a>
   </main>
   {{#if jobs.length}}
     <div class="row">
@@ -11,7 +11,7 @@
       {{#each jobs as |job|}}
         <div class="row mb-10">
           <div class="col-md-10">
-            <div class="card bg-primary rounded mb-3">
+            <div class="card bg-primary rounded mb-3 a-dance">
               <div class="card-header bg-success text-white">{{job.title}}</div>
               <div class="card-body bg-light">
                 <h6 class="card-subtitle mb-2 text-muted">{{job.status}}</h6>
@@ -22,8 +22,8 @@
                     <span class="badge bg-warning">{{name}}</span>
                   {{/each}}
                 </div>
-                <button class="btn btn-sm btn-danger" data-id="{{job.id}}">DELETE</button>
-                <a href="/editJob/{{job.id}}" class="btn btn-sm btn-info">EDIT</a>
+                <button class="btn btn-sm btn-danger a-wobble-bottom" data-id="{{job.id}}">DELETE</button>
+                <a href="/editJob/{{job.id}}" class="btn btn-sm btn-info a-wobble-bottom">EDIT</a>
               </div>
             </div>
           </div>
