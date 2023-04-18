@@ -3,11 +3,14 @@
     Status: {{status}}
   </div>
   <div class="card-body">
-  <h1 class="card-title mt-2">{{title}}</h1>
-  <p class="card-text">Salary: ${{salary}}</p>
-  <p>{{description}}</p>
-</div>
-  {{#if logged_in}}
+    <h1 class="card-title mt-2">{{title}}</h1>
+    <p class="card-text">Salary: ${{salary}}</p>
+    <p>{{description}}</p>
+    {{#each tags}}
+    <span class="badge bg-warning">{{name}}</span>
+    {{/each}}
+  </div>
+  {{!-- {{#if logged_in}}
   <div class="mt-3">
     <form id="review-form" data-id="{{id}}">
       <div class="input-group">
@@ -27,7 +30,8 @@
     {{#each reviews as |review|}}
     <li>
       <p>{{review.content}}</p>
-      <p>By {{job.user.username}}</p>
+      {{!-- <p>By {{review.user.username}}</p> --}}
+      {{!--
     </li>
     {{/each}}
   </ul>
@@ -35,7 +39,6 @@
   <p>No reviews yet.</p>
   {{/if}}
 
-<script src="/js/addReview.js"></script>
+  <script src="/js/addReview.js"></script> --}}
 
 </div>
-<script src="/js/addReview.js"></script>

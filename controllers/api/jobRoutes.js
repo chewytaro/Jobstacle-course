@@ -44,9 +44,18 @@ router.get('/:id', withAuth, async (req, res) => {
         {
           model: User,
           attributes: ['username'],
-        }
+        },
+        // {
+        //   model: Review,
+        //   attributes: ['content'],
+        //   include: {
+        //     model: User,
+        //     attribute: ['username'],
+        //   }
+        // },
       ]
     });
+    console.log(jobData);
 
     if (!jobData) {
       res.status(404).json({ message: 'No job found with this id' });
@@ -132,15 +141,15 @@ router.put('/:id', withAuth, async (req, res) => {
 // Review a job
 router.post('/:id', async (req, res) => {
   try {
-      const newReview = await Review.create({
-          content: req.body.content,
-          job_id: req.params.id,
-      });
-  
-      res.status(200).render(newReview);
+    const newReview = await Review.create({
+      content: req.body.content,
+      job_id: req.params.id,
+    });
+    console.log(newReview);
+    res.status(200).render(newReview);
   } catch (err) {
-      console.log(err);
-      res.status(400).json(err);
+    console.log(err);
+    res.status(400).json(err);
   }
 });
 

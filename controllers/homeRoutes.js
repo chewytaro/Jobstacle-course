@@ -3,7 +3,9 @@ const { Job, User, Review, Tag, JobTag } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    res.render('welcome');
+
+        res.render('welcome');
+
 });
 
 router.get('/login', (req, res) => {

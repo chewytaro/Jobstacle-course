@@ -14,7 +14,7 @@ const tagData = [
         name: "Junior Dev."
       },
       {
-        name: "Javascript f"
+        name: "Javascript"
       }
 ]
 
